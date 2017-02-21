@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+</head>
+
+<body ng-app="myApp" ng-cloak ng-controller="ProductController as products" layout="column">
+
+    <div class="product-filter" layout>
+        <h1 flex class="md-headline">Jackets</h1>
+        <div class="sort md-caption" layout>
+            <div class="collection-sort" layout="column">
+                <md-input-container>
+                    <label>Filter by:</label>
+                    <md-select ng-model="products.filterBy">
+                        <md-option value="{{filter}}" ng-repeat="filter in products.availableFilters">{{filter}}</option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="collection-sort" layout="column">
+                <md-input-container>
+                    <label>Sort by:</label>
+                    <md-select ng-model="products.sortedBy">
+                        <md-option value="{{sort}}" ng-repeat="sort in products.availableSorts">{{sort}}</option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+
+    <section class="catalog" layout layout-wrap layout-align="center">
+        <md-card ng-repeat="it in products.catalog" flex="18" flex-sm="46" flex-xs="80" ng-class="{shaded:$mdMedia('xs') }">
+            <img src="{{it.imageURL}}"></img>
+            <md-card-footer-text layout="column">
+                <span class="md-title">{{it.title}} </span>
+                <span class="md-subhead">{{it.price}}</span>
+            </md-card-footer-text>
+        </md-card>
+    </section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
